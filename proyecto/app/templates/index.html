@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido</title>
+    <style>
+        body {
+            font-family: 'Modern Love', cursive;
+            background-color: #EFF8F8;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #8d1e1e;
+            color: #fff;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #f7eeed;
+            margin-top: 20px;
+        }
+
+        a {
+            display: inline-block;
+            background-color: #196F3D;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        a:hover {
+            background-color: #134C2E;
+        }
+
+        .image-container {
+            margin: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido {{ user.username }} </h1>
+        <div class="image-container">
+            <img src="{% static 'imagen4.jpg' %}" alt="Imagen4" style="width: 500px; height: auto;">
+        </div>
+    </header>
+
+    {% if es_gerente %}
+    <a href="{% url 'clientes' %}">Clientes</a>
+    <a href="{% url 'proveedores' %}">Proveedores</a>
+    <a href="{% url 'articulos' %}">Articulos</a>
+        <section>
+            {% for boton in botones_gerente %}
+                <a href="{% url boton|lower %}">{{ boton }}</a>
+            {% endfor %}
+        </section>
+    {% elif es_cliente %}
+    <a href="{% url 'articulos' %}">Articulos</a>
+        <section>
+            {% for boton in botones_cliente %}
+                <a href="{% url boton|lower %}">{{ boton }}</a>
+            {% endfor %}
+        </section>
+    {% endif %}
+
+    <header>
+        <h1>Área de promociones de navidad</h1>
+    </header>
+
+    <section>
+        <div class="image-container">
+            <img src="{% static 'imagen5.jpg' %}" alt="Imagen5" style="width: 500px; height: auto;">
+        </div>
+    </section>
+
+    <a href="{% url 'logout' %}">Cerrar sesión</a>
+</body>
+</html>

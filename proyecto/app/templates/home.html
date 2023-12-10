@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almacenes Prado</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #EFF8F8;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #c10000;
+            color: #fff;
+            padding: 20px;
+            position: relative;
+            height: 575px;
+        }
+
+        h1 {
+            margin-top: 50px;
+            color: #EFF8F8;
+            font-family: 'Modern Love', cursive;
+            position: relative;
+        }
+
+        .cta-container {
+            margin: 30px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #196F3D;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-right: 20px;
+        }
+
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        .image-grid img {
+            max-width: 100%;
+            height: auto;
+            margin: 5px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .image-grid img:hover {
+            transform: scale(1.1);
+        }
+
+        .christmas-tree-sticker {
+            position: absolute;
+            top: 10%;
+            right: 3%;
+            width: 30px;
+            height: 10;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>COMERCIALES PRADO</h1>
+        <img src="{% static 'stikers.png' %}" alt="Stikers">
+    </header>   
+
+    <div class="cta-container">
+        <a href="{% url 'registro' %}" class="cta-button">Registrarse</a>
+        <a href="{% url 'login' %}" class="cta-button">Iniciar Sesión</a>
+    </div>
+
+    <div class="image-grid">
+        <img src="{% static 'imagen1.jpg' %}" alt="Imagen1">
+        <img src="{% static 'imagen2.jpeg' %}" alt="Imagen2" style="width: 500px; height: auto;">
+        <img src="{% static 'imagen3.jpeg' %}" alt="Imagen3" style="width: 500px; height: auto;">
+    </div>
+</body>
+</html>
+
